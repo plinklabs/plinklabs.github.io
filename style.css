@@ -119,6 +119,14 @@ main { flex: 1; }
   color: var(--muted);
 }
 
+/* A linked card: the anchor fills the cell so the whole card is clickable,
+   and inherits the card's type colours rather than the default link blue. */
+.project-grid a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Footer */
 footer {
   display: flex;
