@@ -3,127 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Frequently asked questions about Anchor — Plink Labs' classroom focus-session software. Is it spyware, can students bypass it, what platforms it supports, what it costs, and where the data goes.">
-  <title>Anchor — FAQ · Plink Labs</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M 10.44 20.86 A 9 9 0 1 1 13.56 20.86' stroke='%23DB2777' stroke-width='1.5' stroke-linecap='round'/><circle cx='12' cy='12' r='1.8' fill='%23DB2777'/></svg>">
+  <meta name="description" content="Anchor FAQ — is it spyware, what does it collect, can a student bypass it, which platforms it supports, what it costs, and where the data lives. Honest answers from the teachers who made it.">
+  <title>FAQ · Anchor · Plink Labs</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><path d='M36 86.8 A36 36 0 1 1 84 86.8' fill='none' stroke='%23DB2777' stroke-width='9' stroke-linecap='round'/><circle cx='60' cy='60' r='13' fill='%23DB2777'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Hanken+Grotesk:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..650&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="page">
 
-  <header>
-    <a href="/" class="wordmark" aria-label="Plink Labs home">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M 10.44 20.86 A 9 9 0 1 1 13.56 20.86" stroke="#DB2777" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="12" cy="12" r="1.8" fill="#DB2777"/>
-      </svg>
-      <span>plink labs</span>
-    </a>
-    <nav>
-      <a href="https://github.com/plinklabs/Anchor">GitHub</a>
-    </nav>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="brand">
+        <a class="logo" href="index.html" aria-label="Plink Labs — Anchor home">
+          <svg viewBox="0 0 120 120" width="22" height="22" aria-hidden="true" style="display:block;flex:none">
+            <path d="M36 86.8 A36 36 0 1 1 84 86.8" fill="none" stroke="#DB2777" stroke-width="9" stroke-linecap="round"></path>
+            <circle cx="60" cy="60" r="13" fill="#DB2777"></circle>
+          </svg>
+          <span class="logo__word">plink<span> labs</span></span>
+        </a>
+        <span class="brand__tag">Anchor</span>
+      </div>
+      <nav class="site-nav" aria-label="Anchor">
+        <a class="nav-link" href="teachers.html">Teachers</a>
+        <a class="nav-link" href="it.html">IT staff</a>
+        <a class="nav-link" href="faq.html" aria-current="page">FAQ</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-gh" href="https://github.com/plinklabs/Anchor"><span class="nav-gh__star">★</span>GitHub</a>
+      </nav>
+    </div>
   </header>
 
-  <nav class="subnav" aria-label="Anchor site">
-    <a href="index.html">Home</a>
-    <a href="teachers.html">Teachers</a>
-    <a href="it.html">IT staff</a>
-    <a href="faq.html" aria-current="page">FAQ</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <main>
 
-  <main class="doc">
-    <p class="eyebrow">Anchor</p>
-    <h1>Frequently asked questions</h1>
-    <p class="lead">The questions teachers and IT leads ask first. Anchor is open-source classroom software made by teachers — it enforces focus during a lesson, it doesn't surveil students. The answers below are consistent with the <a href="privacy.html">privacy policy</a>; where a school's own setup decides the answer, we say so.</p>
-
-    <!-- ============================================================
-         Privacy & surveillance — the trust questions, answered first.
-         ============================================================ -->
-    <section aria-labelledby="privacy-heading">
-      <p class="eyebrow" id="privacy-heading">Privacy &amp; surveillance</p>
-
-      <h2>Is this spyware? Does it watch students all the time?</h2>
-      <p>No. Anchor only observes activity <strong>while a teacher has an active focus session running</strong> — outside a session it inspects nothing and sends nothing. Even during a session it does not record everything: it surfaces <strong>off-task</strong> activity (apps and pages that aren't on the lesson's allowlist) so the teacher can nudge a student back. On-allowlist work is never logged. It does not record keystrokes, page contents, screenshots, passwords, or any browsing outside an active session.</p>
-
-      <h2>What exactly does it collect during a session?</h2>
-      <p>Only what the teacher needs to see who is off task: off-allowlist page visits (URL, hostname, time, and a tab identifier), unblock requests, integrity signals that suggest enforcement was bypassed, and periodic liveness heartbeats. This is tied to the signed-in student for the duration of the session, then it stops. The full, exact list is in the <a href="privacy.html">privacy policy</a>, and the source is public so you can verify it.</p>
-
-      <h2>Do students need to consent, and is that handled?</h2>
-      <p>Anchor runs in schools under the school's authority, so the <strong>school is the data controller</strong> and is responsible for the lawful basis — including any parental notice or consent its policies or local law require. Plink Labs operates no backend and receives no student data, so it can't and doesn't collect anything directly from students. Practically, students always know a session is running: they sign in with their existing school account, and the agent shows a join confirmation when a session starts.</p>
+    <!-- HERO -->
+    <section class="hero hero--plain hero--sub">
+      <div class="hero__inner" style="padding-bottom:64px">
+        <p class="pl-eyebrow"><span class="pl-eyebrow__dot"></span>Anchor — questions, answered</p>
+        <h1 style="max-width:15ch">Frequently asked <span class="magenta-word">questions</span>.</h1>
+        <p class="hero__lead" style="max-width:52ch">The questions teachers and IT leads ask first. Anchor is open-source classroom software made by teachers — it enforces focus during a lesson, it doesn't surveil students. The answers below are consistent with the <a href="privacy.html" class="qa-link">privacy policy</a>; where a school's own setup decides the answer, we say so.</p>
+      </div>
     </section>
 
-    <!-- ============================================================
-         How it works — soft enforcement, bypass, tamper visibility.
-         ============================================================ -->
-    <section aria-labelledby="how-it-works-heading">
-      <p class="eyebrow" id="how-it-works-heading">How it works</p>
+    <div class="wrap">
 
-      <h2>Can a student bypass it?</h2>
-      <p>Yes — deliberately. Anchor is <strong>soft enforcement</strong> on bring-your-own devices, not a lockdown. The agent pulls focus back from off-list apps and the extension blocks off-list pages, but a motivated student without admin rights can still defeat it, and that is by design. The goal is to make off-task behaviour <strong>visible to the teacher</strong>, not impossible. Tampering — closing the agent, using a private window, revoking the extension's access — is surfaced to the teacher as an integrity signal rather than silently prevented.</p>
+      <!-- 01 PRIVACY & SURVEILLANCE -->
+      <section class="qa-section">
+        <div><span class="section-num">01 / Privacy &amp; surveillance</span></div>
+        <div class="qa-body">
+          <div class="qa-list">
+            <div>
+              <h2 class="qa-q">Is this spyware? Does it watch students all the time?</h2>
+              <p class="qa-a">No. Anchor only observes activity <span class="ink-strong">while a teacher has an active focus session running</span> — outside a session it inspects nothing and sends nothing. Even during a session it does not record everything: it surfaces <span class="ink-strong">off-task</span> activity (apps and pages that aren't on the lesson's allowlist) so the teacher can nudge a student back. On-allowlist work is never logged. It does not record keystrokes, page contents, screenshots, passwords, or any browsing outside an active session.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">What exactly does it collect during a session?</h2>
+              <p class="qa-a">Only what the teacher needs to see who is off task: off-allowlist page visits (URL, hostname, time, and a tab identifier), unblock requests, integrity signals that suggest enforcement was bypassed, and periodic liveness heartbeats. This is tied to the signed-in student for the duration of the session, then it stops. The full, exact list is in the <a href="privacy.html" class="qa-link">privacy policy</a>, and the source is public so you can verify it.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">Do students need to consent, and is that handled?</h2>
+              <p class="qa-a">Anchor runs in schools under the school's authority, so the <span class="ink-strong">school is the data controller</span> and is responsible for the lawful basis — including any parental notice or consent its policies or local law require. Plink Labs operates no backend and receives no student data, so it can't and doesn't collect anything directly from students. Practically, students always know a session is running: they sign in with their existing school account, and the agent shows a join confirmation when a session starts.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <h2>What happens when a student goes off task?</h2>
-      <p>Off-list apps are pushed to the background (minimised, not closed — the student keeps their work), off-list pages show a friendly block page, and the event surfaces on the teacher's dashboard live. The teacher can quietly nudge the student back rather than police a log afterwards.</p>
+      <!-- 02 HOW IT WORKS -->
+      <section class="qa-section">
+        <div><span class="section-num">02 / How it works</span></div>
+        <div class="qa-body">
+          <div class="qa-list">
+            <div>
+              <h2 class="qa-q">Can a student bypass it?</h2>
+              <p class="qa-a">Yes — deliberately. Anchor is <span class="ink-strong">soft enforcement</span> on bring-your-own devices, not a lockdown. The agent pulls focus back from off-list apps and the extension blocks off-list pages, but a motivated student without admin rights can still defeat it, and that is by design. The goal is to make off-task behaviour visible to the teacher, not impossible. Tampering — closing the agent, using a private window, revoking the extension's access — is surfaced to the teacher as an integrity signal rather than silently prevented.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">What happens when a student goes off task?</h2>
+              <p class="qa-a">Off-list apps are pushed to the background (minimised, not closed — the student keeps their work), off-list pages show a friendly block page, and the event surfaces on the teacher's dashboard live. The teacher can quietly nudge the student back rather than police a log afterwards.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">Does it keep running between lessons?</h2>
+              <p class="qa-a">No. Anchor only does anything while a teacher-started session is active. When the session ends — teacher action, a timer, or the class period — enforcement stops and observation stops. Nothing is recorded between sessions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <h2>Does it keep running between lessons?</h2>
-      <p>No. Anchor only does anything while a teacher-started session is active. When the session ends — teacher action, a timer, or the class period — enforcement stops and observation stops. Nothing is recorded between sessions.</p>
+      <!-- 03 PLATFORMS -->
+      <section class="qa-section">
+        <div><span class="section-num">03 / Platforms</span></div>
+        <div class="qa-body">
+          <div class="qa-list">
+            <div>
+              <h2 class="qa-q">What platforms does it support?</h2>
+              <p class="qa-a">The student side runs on <span class="ink-strong">Windows</span> (Windows 10 version 1809 or later, or Windows 11) in <span class="ink-strong">Microsoft Edge</span>. The student agent is a native Windows tray app and the URL enforcement runs inside Edge, so both are required on the student device. The teacher dashboard is a web app that runs in any modern browser, with nothing to install.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">Does it work on Chromebooks, Macs, or phones?</h2>
+              <p class="qa-a">Not on the student side. There is <span class="ink-strong">no Mac, Chromebook, iPad, or phone agent</span> — this is a deliberate scope choice, not a roadmap gap. Enforcement lives in a native Windows app plus an Edge extension, so a managed Windows laptop running Edge is the only supported student device. The teacher's dashboard, however, is just a website and works on whatever device the teacher already uses.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">Do students have to install anything?</h2>
+              <p class="qa-a">The agent is installed once per laptop (an MSIX package, typically pushed by the school's IT through Intune or another MDM), and the Edge extension is force-installed by school policy. Day to day a student installs nothing and manages no extra password — they just sign in with their existing school Microsoft account.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 COST & DATA -->
+      <section class="qa-section">
+        <div><span class="section-num">04 / Cost &amp; data</span></div>
+        <div class="qa-body">
+          <div class="qa-list">
+            <div>
+              <h2 class="qa-q">Does it cost anything?</h2>
+              <p class="qa-a">Anchor itself is <span class="ink-strong">free and open source</span>, licensed GPL-3.0. There is no licence fee and no per-seat charge — Plink Labs sells nothing and operates nothing. The only cost is hosting your own backend: a small set of Azure resources (App Service, Azure SQL, SignalR, Static Web App) sized to fit the free tier for a single school.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">Who can see the data, and where is it stored?</h2>
+              <p class="qa-a">Anchor is <span class="ink-strong">self-hosted</span>: each school runs its own backend in its own Azure subscription, and student devices and the dashboard talk only to that. Your data stays in your Azure. The supervising teacher sees the live session activity for their class; access beyond that is governed by the school, which is the data controller. <span class="ink-strong">Plink Labs operates no backend, receives no student data, and has no access to any school's deployment.</span></p>
+            </div>
+            <div>
+              <h2 class="qa-q">How long is the data kept?</h2>
+              <p class="qa-a">Retention is set by the school, because the school runs the backend. As a default the backend prunes raw session events after 30 days and keeps summaries, but each deployment can configure this. Requests to access or delete data should go to your school or its IT administrator, who controls the deployment.</p>
+            </div>
+            <div>
+              <h2 class="qa-q">Can we audit what it actually collects?</h2>
+              <p class="qa-a">Yes. Anchor's full source code — including exactly what each component collects and sends — is public at <a href="https://github.com/plinklabs/Anchor" class="qa-link">github.com/plinklabs/Anchor</a>. Nothing about the data flow is hidden.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- STILL HAVE QUESTIONS -->
+    <section class="section" style="padding:80px 40px 88px">
+      <span class="section-num section-num--accent">Still have questions?</span>
+      <h2 class="h2" style="max-width:16ch">Where to go next.</h2>
+      <p class="qa-a" style="max-width:56ch;margin-top:20px">For questions about Anchor itself, open an issue at <a href="https://github.com/plinklabs/Anchor" class="qa-link">github.com/plinklabs/Anchor</a>. For how your specific school handles Anchor data, contact your school or its IT administrator. You may also want the <a href="teachers.html" class="qa-link">teachers' page</a>, the <a href="it.html" class="qa-link">IT staff page</a>, or the <a href="privacy.html" class="qa-link">privacy policy</a>.</p>
+      <div class="btn-row" style="margin-top:32px">
+        <a class="pl-btn pl-btn--primary" href="https://github.com/plinklabs/Anchor/issues/new/choose"><span style="white-space:nowrap">Open a new issue →</span></a>
+        <a class="pl-btn pl-btn--outline" href="contact.html"><span style="white-space:nowrap">How to contact us</span></a>
+      </div>
     </section>
 
-    <!-- ============================================================
-         Platforms — what it supports, and what it explicitly doesn't.
-         ============================================================ -->
-    <section aria-labelledby="platforms-heading">
-      <p class="eyebrow" id="platforms-heading">Platforms</p>
-
-      <h2>What platforms does it support?</h2>
-      <p>The student side runs on <strong>Windows</strong> (Windows 10 version 1809 or later, or Windows 11) in <strong>Microsoft Edge</strong>. The student agent is a native Windows tray app and the URL enforcement runs inside Edge, so both are required on the student device. The teacher dashboard is a web app that runs in any modern browser, with nothing to install.</p>
-
-      <h2>Does it work on Chromebooks, Macs, or phones?</h2>
-      <p>Not on the student side. There is <strong>no Mac, Chromebook, iPad, or phone agent</strong> — this is a deliberate scope choice, not a roadmap gap. Enforcement lives in a native Windows app plus an Edge extension, so a managed Windows laptop running Edge is the only supported student device. The teacher's dashboard, however, is just a website and works on whatever device the teacher already uses.</p>
-
-      <h2>Do students have to install anything?</h2>
-      <p>The agent is installed once per laptop (an MSIX package, typically pushed by the school's IT through Intune or another MDM), and the Edge extension is force-installed by school policy. Day to day a student installs nothing and manages no extra password — they just sign in with their existing school Microsoft account.</p>
-    </section>
-
-    <!-- ============================================================
-         Cost & data — money, ownership, storage, retention.
-         ============================================================ -->
-    <section aria-labelledby="cost-and-data-heading">
-      <p class="eyebrow" id="cost-and-data-heading">Cost &amp; data</p>
-
-      <h2>Does it cost anything?</h2>
-      <p>Anchor itself is <strong>free and open source</strong>, licensed GPL-3.0. There is no licence fee and no per-seat charge — Plink Labs sells nothing and operates nothing. The only cost is hosting your own backend: a small set of Azure resources (App Service, Azure SQL, SignalR, Static Web App) sized to fit the free tier for a single school.</p>
-
-      <h2>Who can see the data, and where is it stored?</h2>
-      <p>Anchor is <strong>self-hosted</strong>: each school runs its own backend in its own Azure subscription, and student devices and the dashboard talk only to that. Your data stays in your Azure. The supervising teacher sees the live session activity for their class; access beyond that is governed by the school, which is the data controller. <strong>Plink Labs operates no backend, receives no student data, and has no access to any school's deployment.</strong></p>
-
-      <h2>How long is the data kept?</h2>
-      <p>Retention is set by the school, because the school runs the backend. As a default the backend prunes raw session events after 30 days and keeps summaries, but each deployment can configure this. Requests to access or delete data should go to your school or its IT administrator, who controls the deployment.</p>
-
-      <h2>Can we audit what it actually collects?</h2>
-      <p>Yes. Anchor's full source code — including exactly what each component collects and sends — is public at <a href="https://github.com/plinklabs/Anchor">github.com/plinklabs/Anchor</a>. Nothing about the data flow is hidden.</p>
-    </section>
-
-    <!-- ============================================================
-         Still have questions — contact + cross-links.
-         ============================================================ -->
-    <section aria-labelledby="more-heading">
-      <p class="eyebrow" id="more-heading">Still have questions?</p>
-      <h2>Where to go next</h2>
-      <p>For questions about Anchor itself, open an issue at <a href="https://github.com/plinklabs/Anchor">github.com/plinklabs/Anchor</a>. For how your specific school handles Anchor data, contact your school or its IT administrator. You may also want the <a href="teachers.html">teachers' page</a>, the <a href="it.html">IT staff page</a>, or the <a href="privacy.html">privacy policy</a>.</p>
-    </section>
   </main>
 
-  <footer>
-    <p>Built in Belgium. Usable everywhere.</p>
-    <nav>
-      <a href="https://github.com/plinklabs">GitHub</a>
-      <span>·</span>
-      <span>GPL-3.0</span>
-    </nav>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Built in Belgium. Usable everywhere.</span>
+      <nav aria-label="Footer">
+        <a class="foot-link" href="https://github.com/plinklabs">GitHub</a>
+        <span>·</span>
+        <span>GPL-3.0</span>
+      </nav>
+    </div>
   </footer>
 
+</div>
 </body>
 </html>
