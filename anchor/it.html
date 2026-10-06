@@ -3,239 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Anchor for IT staff — self-hosted and single-tenant in your own Azure. Requirements, how it deploys, rollout through Intune and Edge policy, and a plain HTTPS-outbound network shape.">
-  <title>IT staff · Anchor · Plink Labs</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><path d='M36 86.8 A36 36 0 1 1 84 86.8' fill='none' stroke='%23DB2777' stroke-width='9' stroke-linecap='round'/><circle cx='60' cy='60' r='13' fill='%23DB2777'/></svg>">
+  <meta name="description" content="Anchor for IT staff — requirements, how it's deployed, rollout, and network notes for school administrators. A guided summary that hands off to the GitHub docs for the authoritative setup detail.">
+  <title>Anchor for IT staff · Plink Labs</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M 10.44 20.86 A 9 9 0 1 1 13.56 20.86' stroke='%23DB2777' stroke-width='1.5' stroke-linecap='round'/><circle cx='12' cy='12' r='1.8' fill='%23DB2777'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..650&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Hanken+Grotesk:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
 
-  <header class="site-header">
-    <div class="site-header__inner">
-      <div class="brand">
-        <a class="logo" href="index.html" aria-label="Plink Labs — Anchor home">
-          <svg viewBox="0 0 120 120" width="22" height="22" aria-hidden="true" style="display:block;flex:none">
-            <path d="M36 86.8 A36 36 0 1 1 84 86.8" fill="none" stroke="#DB2777" stroke-width="9" stroke-linecap="round"></path>
-            <circle cx="60" cy="60" r="13" fill="#DB2777"></circle>
-          </svg>
-          <span class="logo__word">plink<span> labs</span></span>
-        </a>
-        <span class="brand__tag">Anchor</span>
-      </div>
-      <nav class="site-nav" aria-label="Anchor">
-        <a class="nav-link" href="teachers.html">Teachers</a>
-        <a class="nav-link" href="it.html" aria-current="page">IT staff</a>
-        <a class="nav-link" href="faq.html">FAQ</a>
-        <a class="nav-link" href="contact.html">Contact</a>
-        <a class="nav-gh" href="https://github.com/plinklabs/Anchor"><span class="nav-gh__star">★</span>GitHub</a>
-      </nav>
-    </div>
+  <header>
+    <a href="/" class="wordmark" aria-label="Plink Labs home">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M 10.44 20.86 A 9 9 0 1 1 13.56 20.86" stroke="#DB2777" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="1.8" fill="#DB2777"/>
+      </svg>
+      <span>plink labs</span>
+    </a>
+    <nav>
+      <a href="https://github.com/plinklabs/Anchor">GitHub</a>
+    </nav>
   </header>
+
+  <nav class="subnav" aria-label="Anchor site">
+    <a href="index.html">Home</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="it.html" aria-current="page">IT staff</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero hero--plain hero--sub">
-      <div class="hero__inner">
-        <p class="pl-eyebrow"><span class="pl-eyebrow__dot"></span>Anchor — for IT staff</p>
-        <h1 style="max-width:17ch">What it takes to run Anchor for your <span class="magenta-word">school</span>.</h1>
-        <p class="hero__lead" style="max-width:52ch">Anchor is self-hosted: your school runs its own backend in your own Azure tenant, and student devices talk only to that. This page is the IT summary — requirements, how it deploys, rollout, and the network shape. For the authoritative, step-by-step setup it hands you straight off to the GitHub docs, which are kept current with the code.</p>
-        <div class="btn-row" style="margin-top:36px">
-          <a class="pl-btn pl-btn--primary" href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md"><span style="white-space:nowrap">Deploy your backend →</span></a>
-          <a class="pl-btn pl-btn--outline" href="https://github.com/plinklabs/Anchor"><span style="white-space:nowrap">Add to Edge</span></a>
-          <a class="pl-btn pl-btn--ghost" href="https://github.com/plinklabs/Anchor/releases"><span style="white-space:nowrap">Get the agent</span></a>
-        </div>
-        <div style="margin-top:60px">
-          <div class="pl-specstrip">
-            <span class="pl-specstrip__item">Windows 10 1809+</span>
-            <span class="pl-specstrip__item">Microsoft Edge</span>
-            <span class="pl-specstrip__item">Azure free-tier</span>
-            <span class="pl-specstrip__item">Single-tenant</span>
-          </div>
-        </div>
+    <!-- Hero — what IT staff get from this page, and the hand-off promise -->
+    <section class="hero">
+      <h1>What it takes to run Anchor for your school.</h1>
+      <p>Anchor is self-hosted: your school runs its own backend in your own Azure tenant, and student devices talk only to that. This page is the IT summary — requirements, how it deploys, rollout, and the network shape. For the authoritative, step-by-step setup it hands you straight off to the GitHub docs, which are kept current with the code.</p>
+      <!--
+        CTA target assumption: the Edge Add-ons listing is not public yet, so
+        "Add to Edge" points at the repository for now, matching the home page.
+        Repoint it to the canonical Edge Add-ons URL once the extension is
+        published. (Issue #254)
+
+        "Publish your agent" leads to the agent section of docs/RELEASE.md,
+        not to upstream's GitHub Releases: that Setup.exe is built for
+        upstream's backend and Entra tenant, so each school publishes its own
+        from its fork. (Issue #361)
+      -->
+      <div class="cta-row">
+        <a class="cta cta--primary" href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md">Deploy your backend</a>
+        <a class="cta cta--secondary" href="https://github.com/plinklabs/Anchor">Add to Edge</a>
+        <a class="cta cta--secondary" href="https://github.com/plinklabs/Anchor/blob/main/docs/RELEASE.md#agent-agent-v">Publish your agent</a>
       </div>
     </section>
 
-    <!-- 01 — REQUIREMENTS -->
-    <section class="section" style="padding-bottom:0">
-      <span class="section-num">01 / Requirements</span>
-      <h2 class="h2" style="max-width:22ch">Deliberately narrow.</h2>
-      <p class="lead" style="max-width:54ch">Edge-only enforcement on managed Windows laptops, one backend per school. That focus is a design choice, not a roadmap gap — there is no Mac, Chromebook, or iPad student client, and no multi-tenant SaaS.</p>
-
-      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:44px">
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">01</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">Student agent</h3>
-          <p class="card-body">Windows 10 version 1809 or later, or Windows 11. A native tray app, delivered as MSIX. This is the only managed-device surface — there is no Mac, Chromebook, or iPad agent.</p>
-        </div>
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">02</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">Browser</h3>
-          <p class="card-body">Microsoft Edge (Chromium), with the Anchor extension. Edge-only by design: URL enforcement runs inside Edge, so other browsers are out of scope on the student device.</p>
-        </div>
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">03</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">Teacher dashboard</h3>
-          <p class="card-body">Any modern browser. The dashboard is a web app — nothing to install on the teacher's side, on whatever device they already use.</p>
-        </div>
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">04</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">Backend</h3>
-          <p class="card-body">Microsoft Azure. Each school self-hosts a small set of free-tier resources (App Service, Azure SQL, SignalR, Static Web App) in its own subscription. Single-tenant by design.</p>
-        </div>
+    <!-- ============================================================
+         Requirements
+         ============================================================ -->
+    <section class="feature-section">
+      <p class="eyebrow">Requirements</p>
+      <p class="lead" style="max-width: 52rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.75rem;">Anchor is deliberately narrow: Edge-only enforcement on students' Windows laptops, one backend per school. It's built for bring-your-own devices, so nothing depends on the laptops being managed. That focus is a design choice, not a roadmap gap — there is no Mac, Chromebook, or iPad student client, and no multi-tenant SaaS.</p>
+      <div class="feature-grid">
+        <article>
+          <h3>Student agent</h3>
+          <p>Windows 10 version 1809 or later, or Windows 11. A native tray app the student installs from a <code>Setup.exe</code>: it installs for that Windows user only, needs no admin rights and no MDM, starts when they sign in to Windows, and updates itself. There is no Mac, Chromebook, or iPad agent.</p>
+        </article>
+        <article>
+          <h3>Browser</h3>
+          <p>Microsoft Edge (Chromium), with the Anchor extension. Edge-only by design: URL enforcement runs inside Edge, so other browsers are out of scope on the student device.</p>
+        </article>
+        <article>
+          <h3>Teacher dashboard</h3>
+          <p>Any modern browser. The dashboard is a web app — nothing to install on the teacher's side, on whatever device they already use.</p>
+        </article>
+        <article>
+          <h3>Backend</h3>
+          <p>Microsoft Azure, in the school's own subscription: an App Service on the Basic B1 plan (Always On), an Azure SQL Standard S0 database, and the teacher dashboard on a free-tier Static Web App. For a school of around 1,000 students that's about €24 a month (Azure list prices, Belgium Central, excluding VAT), or about €43 if the database needs Standard S1. Single-tenant by design.</p>
+        </article>
       </div>
     </section>
 
-    <div style="max-width:1120px;margin:0 auto;padding:72px 40px 0">
-      <div class="pl-pingdiv" aria-hidden="true">
-        <span class="pl-pingdiv__line" style="flex-grow:0.36"></span>
-        <span class="pl-pingdiv__node" style="width:44px;height:44px">
-          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
-            <circle class="pl-pingdiv__ring" cx="24" cy="24" r="21" fill="none" stroke="#DB2777" stroke-width="2"></circle>
-            <circle class="pl-pingdiv__ring b" cx="24" cy="24" r="21" fill="none" stroke="#DB2777" stroke-width="2"></circle>
-            <circle cx="24" cy="24" r="4.5" fill="#DB2777"></circle>
-          </svg>
-        </span>
-        <span class="pl-pingdiv__line" style="flex-grow:0.64"></span>
-      </div>
-    </div>
+    <!-- ============================================================
+         How it's deployed
+         ============================================================ -->
+    <section class="callout">
+      <p class="eyebrow">How it's deployed</p>
+      <h2>Self-hosted, single-tenant, in your own Azure</h2>
+      <p>You run one Anchor backend for your school, in your school's Azure subscription. The student devices and the teacher dashboard talk only to that backend — <strong>your data stays in your Azure</strong>. Plink Labs operates no backend, receives no student data, and has no access to your deployment.</p>
+      <p>Sign-in <strong>reuses the school's existing Entra ID</strong>: teachers and students sign in with the Microsoft accounts they already have, against your own tenant. The deploy creates two single-tenant Entra app registrations (the API and the dashboard SPA); there are no separate Anchor passwords to manage and no third-party identity provider in the loop.</p>
+    </section>
 
-    <!-- INK — HOW IT'S DEPLOYED -->
-    <section class="ink-section" style="margin-top:64px">
-      <div class="ink-section__inner">
-        <p class="pl-eyebrow pl-eyebrow--on-ink"><span class="pl-eyebrow__dot"></span>How it's deployed</p>
-        <h2 class="ink-h2" style="max-width:22ch">Self-hosted, single-tenant, in your own <span class="magenta-word--dark">Azure</span>.</h2>
-        <div class="ink-cols">
-          <p class="on-ink">You run one Anchor backend for your school, in your school's Azure subscription. The student devices and the teacher dashboard talk only to that backend — <span class="ink-strong" style="color:var(--on-ink)">your data stays in your Azure</span>. Plink Labs operates no backend, receives no student data, and has no access to your deployment.</p>
-          <p class="on-ink-muted">Sign-in reuses the school's existing Entra ID: teachers and students sign in with the Microsoft accounts they already have, against your own tenant. The deploy creates two single-tenant Entra app registrations (the API and the dashboard SPA); there are no separate Anchor passwords to manage and no third-party identity provider in the loop.</p>
-        </div>
+    <!-- ============================================================
+         Rollout
+         ============================================================ -->
+    <section class="feature-section">
+      <p class="eyebrow">Rollout</p>
+      <p class="lead" style="max-width: 52rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.75rem;">Three pieces, in this order, and nothing to push through Intune or another MDM: you stand up the backend and publish an agent release, students install the agent themselves, and the agent sets up the extension. The GitHub docs carry the exact commands and settings — this is the shape of the work.</p>
+      <div class="feature-grid">
+        <article>
+          <p class="step">01</p>
+          <h3>The backend</h3>
+          <p>In your school's fork of the repository, stand up your Azure backend with <code>scripts/setup.ps1</code> — one command provisions the resources, the Entra registrations, and the GitHub deploy wiring. A direct Bicep deploy and a portal walkthrough are documented as manual alternatives.</p>
+        </article>
+        <article>
+          <p class="step">02</p>
+          <h3>The agent</h3>
+          <p>Push an agent release tag on your repository. The release workflow builds a <code>Setup.exe</code> with your backend's address and Entra IDs baked in and publishes it on your repository's GitHub Releases. Students run it themselves: no admin rights needed, though the installer isn't code-signed yet, so Windows SmartScreen asks them to confirm once.</p>
+        </article>
+        <article>
+          <p class="step">03</p>
+          <h3>The extension</h3>
+          <p>Nothing to push. On first run the agent sets a per-user Edge policy that makes Edge install and pin the Anchor extension from the Edge Add-ons store. If Edge doesn't pick that up, the agent opens the store listing so the student can add it in one click. Uninstalling the agent removes the policy again.</p>
+        </article>
       </div>
     </section>
 
-    <!-- 02 — ROLLOUT -->
-    <section class="section" style="padding-bottom:0">
-      <span class="section-num">02 / Rollout</span>
-      <h2 class="h2" style="max-width:22ch">Three pieces to push.</h2>
-      <p class="lead" style="max-width:54ch">All through tools you already run. The GitHub docs carry the exact commands and settings — this is the shape of the work.</p>
-
-      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:44px">
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">01</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">The agent</h3>
-          <p class="card-body">Distribute the student agent as an MSIX package through Microsoft Intune (or your existing MDM), to the managed Windows laptops in scope.</p>
-        </div>
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">02</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">The extension</h3>
-          <p class="card-body">Force-install the Anchor extension from the Microsoft Edge Add-ons store via Edge policy, so it is present and pinned on every managed device.</p>
-        </div>
-        <div class="pl-card pl-card--interactive">
-          <span class="pl-card__num">03</span>
-          <h3 class="card-title" style="font-size:1.3rem;margin:8px 0 10px">The backend</h3>
-          <p class="card-body">Stand up your Azure backend with <code>scripts/setup.ps1</code> — one command provisions the resources, the Entra registrations, and the GitHub deploy wiring. A direct Bicep deploy and a portal walkthrough are documented as manual alternatives.</p>
-        </div>
-      </div>
+    <!-- ============================================================
+         Network
+         ============================================================ -->
+    <section class="callout">
+      <p class="eyebrow">Network</p>
+      <h2>Plain HTTPS outbound — no proxy surgery</h2>
+      <p>Everything runs over <strong>HTTPS/TLS</strong>. Each student device makes <strong>outbound</strong> connections to your school's App Service (by default <code>anchor-api-&lt;suffix&gt;.azurewebsites.net</code>), which serves both the API and the realtime session channel. The realtime channel runs inside the API itself, so there is no separate SignalR service to allow — just make sure outbound HTTPS to that host permits <strong>WebSocket upgrades</strong>. Beyond that, devices sign in through Microsoft Entra ID (<code>login.microsoftonline.com</code>), and the agent checks your repository's GitHub Releases for updates.</p>
+      <p>Anchor needs <strong>no proxy certificate, no TLS interception, and no MITM</strong> on its connections. Because enforcement and reporting are device-resident and outbound-only, it is <strong>BYOD-friendly</strong>: it does not depend on devices sitting behind a particular network, so it works on school Wi-Fi and at home alike.</p>
     </section>
 
-    <!-- 03 — NETWORK -->
-    <section class="section" style="padding-bottom:0">
-      <span class="section-num">03 / Network</span>
-      <h2 class="h2" style="max-width:20ch">Plain HTTPS outbound — no proxy surgery.</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;max-width:920px;margin-top:32px">
-        <p style="font-size:1.0625rem;line-height:1.65;color:var(--ink-60);margin:0">Everything runs over <span class="ink-strong">HTTPS/TLS</span>. Each student device makes outbound connections to your school's Azure backend (the App Service API) and to Azure SignalR for the realtime session channel — the same kind of HTTPS traffic to <code>*.azurewebsites.net</code> and the SignalR service that the rest of your Microsoft cloud already uses.</p>
-        <p style="font-size:1.0625rem;line-height:1.65;color:var(--ink-60);margin:0">Anchor needs <span class="ink-strong">no proxy certificate, no TLS interception, and no MITM</span> on its connections. Because enforcement and reporting are device-resident and outbound-only, it is BYOD-friendly: it does not depend on devices sitting behind a particular network, so it works on school Wi-Fi and at home alike.</p>
-      </div>
-    </section>
-
-    <div style="max-width:1120px;margin:0 auto;padding:80px 40px 0">
-      <div class="pl-scope" aria-hidden="true">
-        <span class="pl-scope__line" style="flex-grow:0.6"></span>
-        <svg class="pl-scope__glyph" viewBox="0 0 172 80" width="172" height="80" aria-hidden="true">
-          <path d="M0 40 L18 40 M42 40 L74 40 L92 18 L110 62 L128 40 L172 40" fill="none" stroke="#DB2777" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <circle cx="30" cy="40" r="4.5" fill="#DB2777"></circle>
-        </svg>
-        <span class="pl-scope__line" style="flex-grow:0.4"></span>
-      </div>
-    </div>
-
-    <!-- 04 — DOCS -->
-    <section class="section" style="padding:48px 40px 0">
-      <span class="section-num">04 / Read the authoritative docs</span>
-      <h2 class="h2" style="max-width:22ch">The GitHub docs are the source of truth.</h2>
-      <p class="lead" style="max-width:54ch">This page is a summary; the docs track the code. Start with the setup guide and follow its links.</p>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:36px">
-        <a class="doc-card" href="https://github.com/plinklabs/Anchor/blob/main/README.md">
-          <span class="doc-card__head">README →</span>
+    <!-- ============================================================
+         Docs & CTAs — deep links into the authoritative GitHub docs
+         ============================================================ -->
+    <section class="feature-section">
+      <p class="eyebrow">Read the authoritative docs</p>
+      <p class="lead" style="max-width: 52rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.75rem;">This page is a summary; the GitHub docs are the source of truth and track the code. Start with the setup guide and follow its links.</p>
+      <div class="feature-grid">
+        <article>
+          <h3><a href="https://github.com/plinklabs/Anchor/blob/main/README.md">README</a></h3>
           <p>What Anchor is, the architecture diagram, the five components, and how to build and run each piece locally.</p>
-        </a>
-        <a class="doc-card" href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md">
-          <span class="doc-card__head">docs/SETUP.md →</span>
-          <p>The authoritative end-to-end setup: Entra app registrations, the Bicep deploy, App Service settings, admin consent, and the GitHub secrets — with a manual fallback for every step.</p>
-        </a>
-        <a class="doc-card" href="https://github.com/plinklabs/Anchor/blob/main/docs/RELEASE.md">
-          <span class="doc-card__head">docs/RELEASE.md →</span>
-          <p>The deploy pipeline and the authoritative inventory of every secret and variable the deploy workflows consume.</p>
-        </a>
-        <a class="doc-card" href="https://github.com/plinklabs/Anchor/blob/main/infra/README.md">
-          <span class="doc-card__head">infra/README.md →</span>
+        </article>
+        <article>
+          <h3><a href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md">docs/SETUP.md</a></h3>
+          <p>The authoritative end-to-end setup: Entra app registrations, the Bicep deploy, App Service settings, admin consent, and the GitHub secrets/variables — with a manual fallback for every step.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/plinklabs/Anchor/blob/main/docs/RELEASE.md">docs/RELEASE.md</a></h3>
+          <p>The deploy pipeline, how to cut an agent release, and the authoritative inventory of every secret and variable the workflows consume.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/plinklabs/Anchor/blob/main/infra/README.md">infra/README.md</a></h3>
           <p>The Azure infrastructure: the one-command bootstrap, the direct-Bicep deploy, the portal walkthrough, every template parameter, and the resources created.</p>
-        </a>
+        </article>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section" style="padding:72px 40px 24px">
-      <span class="section-num section-num--accent">05 / Get started</span>
-      <h2 class="h2" style="max-width:20ch">Deploy the backend, then roll out the clients.</h2>
-      <p class="lead" style="max-width:52ch">Stand up your school's backend first, then push the agent and the extension to your managed devices. The setup guide walks the backend end to end; the agent ships from GitHub Releases, and the extension installs from the Edge store.</p>
-      <div class="btn-row" style="margin-top:32px">
-        <a class="pl-btn pl-btn--primary" href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md"><span style="white-space:nowrap">Deploy your backend →</span></a>
-        <a class="pl-btn pl-btn--outline" href="https://github.com/plinklabs/Anchor"><span style="white-space:nowrap">Add to Edge</span></a>
-        <a class="pl-btn pl-btn--ghost" href="https://github.com/plinklabs/Anchor/releases"><span style="white-space:nowrap">Get the agent</span></a>
+    <!-- CTAs / install actions -->
+    <section class="callout">
+      <p class="eyebrow">Get started</p>
+      <h2>Deploy the backend, then roll out the clients</h2>
+      <p>Stand up your school's backend first, then publish an agent release from your repository and share its <code>Setup.exe</code> with students. The setup guide walks the backend end to end, and the release guide covers the agent. The agent then has Edge install the extension from the Edge Add-ons store.</p>
+      <!--
+        "Add to Edge" points at the repository until the Edge Add-ons listing is
+        public, mirroring the home page. Repoint once published. (Issue #254)
+        "Publish your agent" leads to the agent release guide, as in the hero.
+        (Issue #361)
+      -->
+      <div class="cta-row">
+        <a class="cta cta--primary" href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md">Deploy your backend</a>
+        <a class="cta cta--secondary" href="https://github.com/plinklabs/Anchor">Add to Edge</a>
+        <a class="cta cta--secondary" href="https://github.com/plinklabs/Anchor/blob/main/docs/RELEASE.md#agent-agent-v">Publish your agent</a>
       </div>
     </section>
 
-    <!-- RESOURCES -->
-    <section class="section" style="padding:56px 40px 80px">
-      <span class="section-num">06 / Resources</span>
-      <div class="res-grid">
-        <a class="res-card" href="teachers.html">
-          <span><span class="res-card__kind">Guide</span><span class="res-card__title">For teachers</span></span>
-          <span class="res-card__arrow">→</span>
-        </a>
-        <a class="res-card" href="privacy.html">
-          <span><span class="res-card__kind">Legal</span><span class="res-card__title">Privacy policy</span></span>
-          <span class="res-card__arrow">→</span>
-        </a>
-        <a class="res-card" href="https://github.com/plinklabs/Anchor/releases">
-          <span><span class="res-card__kind">Download</span><span class="res-card__title">Get the agent</span></span>
-          <span class="res-card__arrow">→</span>
-        </a>
-        <a class="res-card" href="https://github.com/plinklabs/Anchor">
-          <span><span class="res-card__kind">Code</span><span class="res-card__title">Source on GitHub</span></span>
-          <span class="res-card__arrow">→</span>
-        </a>
-      </div>
+    <section class="links">
+      <h2>Resources</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="teachers.html">For teachers</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="https://github.com/plinklabs/Anchor/blob/main/docs/SETUP.md">Setup guide (docs/SETUP.md)</a></li>
+        <li><a href="https://github.com/plinklabs/Anchor/blob/main/scripts/setup.ps1">One-command bootstrap (scripts/setup.ps1)</a></li>
+        <li><a href="https://github.com/plinklabs/Anchor/blob/main/docs/RELEASE.md#agent-agent-v">Agent release guide (docs/RELEASE.md)</a></li>
+        <li><a href="https://github.com/plinklabs/Anchor">Source code on GitHub</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <span>Built in Belgium. Usable everywhere.</span>
-      <nav aria-label="Footer">
-        <a class="foot-link" href="https://github.com/plinklabs">GitHub</a>
-        <span>·</span>
-        <span>GPL-3.0</span>
-      </nav>
-    </div>
+  <footer>
+    <p>Built in Belgium. Usable everywhere.</p>
+    <nav>
+      <a href="https://github.com/plinklabs">GitHub</a>
+      <span>·</span>
+      <span>GPL-3.0</span>
+    </nav>
   </footer>
 
-</div>
 </body>
 </html>
